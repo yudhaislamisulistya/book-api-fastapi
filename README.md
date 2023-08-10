@@ -1,5 +1,5 @@
 # Simple Book with FastAPI and Alembic
-
+[![CodeFactor](https://www.codefactor.io/repository/github/yudhaislamisulistya/book-api-fastapi/badge)](https://www.codefactor.io/repository/github/yudhaislamisulistya/book-api-fastapi)
 This project provides a simple structure for creating a FastAPI-based web application for managing books, along with Alembic for database migrations. It is designed with beginners in mind and follows a structured folder organization.
 
 ## Prerequisites
