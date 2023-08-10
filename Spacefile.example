@@ -1,0 +1,24 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: book-api
+    src: ./
+    engine: python3.9
+    primary: true
+    public: true
+    run: uvicorn main:app
+    dev: uvicorn main:app --reload
+    presets:
+      env:
+        - name: DB_DRIVER
+          default: "<your-db-driver>"
+        - name: DB_HOST
+          default: "<your-db-host>"
+        - name: DB_PORT
+          default: "<your-db-port>"
+        - name: DB_USER
+          default: "<your-db-user>"
+        - name: DB_PASSWORD
+          default: "<your-db-password>"
+        - name: DB_NAME
+          default: "<your-db-name>"
