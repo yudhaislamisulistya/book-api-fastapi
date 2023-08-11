@@ -15,4 +15,8 @@ class BookController:
         if not data:
             return False
         return book_db.delete_book_by_id(db=db, book_id=book_id)
-        
+    def update_book(self, db: Session, book_id: int, book=schema_book.Book):
+        data = book_db.get_book_by_id(db=db, book_id=book_id)
+        if not data:
+            return False
+        return book_db.update_book_by_id(db=db, book_id=book_id, book=book)
