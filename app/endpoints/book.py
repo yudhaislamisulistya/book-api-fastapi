@@ -58,6 +58,24 @@ async def create_book(book: schema_book.Book, db: Session = Depends(get_db)):
     }
     return JSONResponse(content=response_content, status_code=status.HTTP_201_CREATED)
 
+@router.put("/{book_id}", response_model=schema_book.Book)
+async def update_book(book_id: int, book: schema_book.Book, db: Session = Depends(get_db)):
+    results = book_controller.update_book(db=db, book_id=book_id, book=book)
+    if not results:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail={
+                "message": "Book not found",
+                "status_code": status.HTTP_404_NOT_FOUND,
+            },
+        )
+    response_content = {
+        "detail": {
+            "message": "Successfully updated book",
+            "status_code": status.HTTP_200_OK,
+        },
+    }
+    return JSONResponse(content=response_content, status_code=status.HTTP_200_OK)
 
 @router.delete("/{book_id}")
 async def delete_book(book_id: int, db: Session = Depends(get_db)):
